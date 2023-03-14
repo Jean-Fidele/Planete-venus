@@ -1,0 +1,49 @@
+<div class="card" style="min-height: 451px;">
+    <div class="card-header">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Categorie</label>
+          <input type="text" id="changement" name="changement" class="form-control" (change) = "handleChange($event)">
+        </div>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="colCode">Code</th>
+            <th scope="col">Libelle</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cat of categories">
+              <td class="colCode">{{ cat.code }}</td>
+              <td>{{ cat.libelle }}</td>
+              <td class="colDetails"><button class="page-link" (click)="ClickDetals(cat.code)">Detail</button></td>
+              <td class="colDetails"><button class="page-link" (click)="ClickDetals(cat.code)">Edit</button></td>
+              <td class="colDetails"><button class="page-link" (click)="ClickDetals(cat.code)">Delete</button></td>
+            </tr>
+        </tbody>
+      </table>
+      <nav aria-label="Page navigation example" style="position: absolute; bottom:0;">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+
+          <li class="page-item" *ngFor="let el of tabPage">
+              <button class="page-link" (click)="method(el)">{{el}}</button>
+          </li>
+          
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
