@@ -1,0 +1,11 @@
+
+<div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Code</label>
+    <input type="text" [(ngModel)]="code" class="form-control" name="code" >
+</div>
+<div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Libelle</label>
+    <input type="text" class="form-control" [(ngModel)]="libelle" name="libelle"/>
+</div>
+
+<button type="submit" (click)="ClickEdit()" class="btn btn-primary">Edit</button>

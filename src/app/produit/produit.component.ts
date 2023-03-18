@@ -60,7 +60,19 @@ export class ProduitComponent {
     });  
   }
 
-  ClickDetals(id: number){
+  ClickCreate(){
+    this.router.navigate(["/produits/create"]);
+  }
+  
+  ClickDetails(id: number){
     this.router.navigate(["/produits/detail"], {queryParams:{id: id}});
+  }
+
+  ClickEdit(id:number){
+    this.router.navigate(["/produits/edit"], {queryParams:{id: id}});
+  }
+  
+  ClickDelete(id:number){
+    this.router.navigate(["/produits/delete"], {queryParams:{id: id}});
   }
 }

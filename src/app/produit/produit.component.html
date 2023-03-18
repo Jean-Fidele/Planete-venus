@@ -2,7 +2,13 @@
   <div class="card-header">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Produit/Categorie</label>
-        <input type="text" id="changement" name="changement" class="form-control">
+        <select class="form-control form-control-sm" style="width: 25%;" id="exampleFormControlSelect1">
+            <option>Categorie 1</option>
+            <option>Categorie 2</option>
+            <option>Categorie 3</option>
+            <option>Categorie 4</option>
+          </select>
+        
       </div>
   </div>
   <div class="card-body">
@@ -20,9 +26,9 @@
           <tr *ngFor="let prod of produits">
             <td class="colCode">{{ prod.code }}</td>
             <td>{{ prod.name }}</td>
-            <td><button class="page-link" (click)="ClickDetals(prod.code)">Detail</button></td>
-            <td><button class="page-link" (click)="ClickDetals(prod.code)">Edit</button></td>
-            <td><button class="page-link" (click)="ClickDetals(prod.code)">Delete</button></td>
+            <td><img src="/assets/icones/page_find.png" class="img-thumbnail" (click)="ClickDetails(prod.code)" alt="aucun"/></td>
+              <td><img src="/assets/icones/page_edit.png" class="img-thumbnail" (click)="ClickEdit(prod.code)" alt="aucun"/></td>
+              <td><img src="/assets/icones/page_delete.png" class="img-thumbnail" (click)="ClickDelete(prod.code)" alt="aucun"/></td>
           </tr>
       </tbody>
     </table>
@@ -45,5 +51,6 @@
         </li>
       </ul>
     </nav>
+    <button type="button" class="btn btn-link" (click)="ClickCreate()" style="position: absolute; right:30px; bottom:15px">Create</button>
   </div>
 </div>

@@ -1,19 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Categorie } from '../models/Categorie';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  selector: 'app-categorie-detail',
+  templateUrl: './categorie-detail.component.html',
+  styleUrls: ['./categorie-detail.component.css']
 })
-export class DetailComponent {
+export class CategorieDetailComponent {
   public code: number = 1;
   public libelle: string | undefined;
   public categorie: Categorie | undefined;
 
-  constructor(public http: HttpClient,  private router: ActivatedRoute) {
+  constructor(public http: HttpClient, public routerActivate: Router, private router: ActivatedRoute) {
 
       this.router.queryParams.subscribe(param=>{
         var id =  param["id"];
@@ -23,5 +23,9 @@ export class DetailComponent {
             this.libelle = this.categorie.libelle;
         }); 
       });
+  }
+
+  ClickRetour(){
+    this.routerActivate.navigate(["/categories"]);
   }
 }

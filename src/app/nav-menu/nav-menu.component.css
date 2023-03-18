@@ -1,6 +1,19 @@
+.activeColor{
+    color: blue;
+    text-decoration-line: underline;
+}
+
+.noActiveColor{
+    color: black;
+}
+
 .navbar-nav{
     margin-left: auto;
     margin-right: auto;
+}
+
+.navbar-nav > a:hover{
+    color: blue;
 }
 
 .menu{

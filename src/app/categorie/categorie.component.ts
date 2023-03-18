@@ -15,7 +15,8 @@ export class CategorieComponent {
   public page: number = 1;
   public tabPage: number[] = [];
   public size: number = 5;
-
+  public isActive = 1;
+  
   constructor(public http: HttpClient,  private router: Router) {
     http.get<CategorieRes>('https://localhost:7185/api/categorie?page=1').subscribe((result) => {
       this.total = result.totale;
@@ -34,7 +35,6 @@ export class CategorieComponent {
   }
 
   method(page: number){
-   
     this.http.get<CategorieRes>('https://localhost:7185/api/categorie?page=' + page).subscribe((result) => {       
       this.categories = [];      
       this.tabPage = [];
@@ -42,9 +42,8 @@ export class CategorieComponent {
       this.total = result.totale;
       var nbPage = this.total / this.size; 
       var reste = this.total % this.size; 
-      
       nbPage = reste == 0 ? parseInt(nbPage.toFixed(2)) :  parseInt(nbPage.toFixed(2)) + 1;
-
+      
       for(let i = 1; i <= nbPage; i++){
         this.tabPage.push(i);
       }
@@ -57,11 +56,37 @@ export class CategorieComponent {
     });  
   }
 
-  ClickDetals(id: number){
+  OnChangeMenu(p: number){
+    this.isActive = p;
+  }
+
+  ClickCreate(){
+    this.router.navigate(["/categories/create"]);
+  }
+
+  ClickDetails(id: number){
     this.router.navigate(["/categories/detail"], {queryParams:{id: id}});
+  }
+
+  ClickEdit(id:number){
+    this.router.navigate(["/categories/edit"], {queryParams:{id: id}});
+  }
+
+  ClickDelete(id:number){
+    this.router.navigate(["/categories/delete"], {queryParams:{id: id}});
   }
 
   handleChange($event: Event){
     console.log("EVENT :" + this);
+  }
+
+  OnNextPage(){
+    this.isActive = this.isActive + 1;
+    this.method(this.isActive);
+  }
+
+  OnPreviewPage(){
+    this.isActive = this.isActive - 1;
+    this.method(this.isActive);
   }
 }

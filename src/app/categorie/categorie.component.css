@@ -3,5 +3,15 @@
 }
 
 .colDetails{
-    width: 80px;
+    width: 50px;
+}
+
+.activeColor{
+    color: green;
+    text-decoration-line: underline;
+    background-color:gainsboro;
+}
+
+.noActiveColor{
+    color: blue;
 }
