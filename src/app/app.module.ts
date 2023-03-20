@@ -15,6 +15,7 @@ import { ProduitCreateComponent } from './produit/produit-create/produit-create.
 import { ProduitDetailComponent } from './produit/produit-detail/produit-detail.component';
 import { ProduitEditComponent } from './produit/produit-edit/produit-edit.component';
 import { CategorieCreateComponent } from './categorie/categorie-create/categorie-create.component';
+import { JwtModule } from "@auth0/angular-jwt" ;
 
 
 @NgModule({
@@ -33,6 +34,13 @@ import { CategorieCreateComponent } from './categorie/categorie-create/categorie
   ],
   imports: [
     BrowserModule,HttpClientModule,FormsModule,
+    JwtModule.forRoot({ 
+      config : { 
+        tokenGetter : tokenGetter , 
+        allowedDomains : [ "https://localhost:7185", "http://localhost:8087" ] , 
+        disallowedRoutes : [ "http://example.com/examplebadroute/" ] , 
+      }, 
+    }), 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'produits', component: ProduitComponent },
@@ -50,3 +58,7 @@ import { CategorieCreateComponent } from './categorie/categorie-create/categorie
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}

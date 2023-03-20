@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Produit } from './models/Produit';
 import { ProduitRes } from './models/ProduitRes';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-produit',
@@ -17,7 +18,8 @@ export class ProduitComponent {
   public size: number = 5;
 
   constructor(public http: HttpClient,  private router: Router) {
-    http.get<ProduitRes>('https://localhost:7185/api/produit?page=1').subscribe((result) => {
+    var url_base = environment.url_base;
+    http.get<ProduitRes>(url_base + '/produit?page=1').subscribe((result) => {
       this.total = result.totale;
       var nbPage = this.total / this.size; 
       var reste = this.total % this.size;
