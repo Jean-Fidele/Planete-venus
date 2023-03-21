@@ -16,10 +16,11 @@ export class ProduitComponent {
   public page: number = 1;
   public tabPage: number[] = [];
   public size: number = 5;
+  public url_base = environment.url_base;
 
   constructor(public http: HttpClient,  private router: Router) {
-    var url_base = environment.url_base;
-    http.get<ProduitRes>(url_base + '/produit?page=1').subscribe((result) => {
+    
+    http.get<ProduitRes>(this.url_base + '/produit?page=1').subscribe((result) => {
       this.total = result.totale;
       var nbPage = this.total / this.size; 
       var reste = this.total % this.size;
@@ -39,8 +40,7 @@ export class ProduitComponent {
   }
 
   method(page: number){
-   
-    this.http.get<ProduitRes>('https://localhost:7185/api/produit?page=' + page).subscribe((result) => {       
+    this.http.get<ProduitRes>(this.url_base + '/produit?page=' + page).subscribe((result) => {       
       this.produits = [];      
       this.tabPage = [];
 

@@ -7,7 +7,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ProduitComponent } from './produit/produit.component';
 import { CategorieComponent } from './categorie/categorie.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CategorieDetailComponent } from './categorie/categorie-detail/categorie-detail.component';
 import { CategorieEditComponent } from './categorie/categorie-edit/categorie-edit.component';
@@ -15,7 +15,8 @@ import { ProduitCreateComponent } from './produit/produit-create/produit-create.
 import { ProduitDetailComponent } from './produit/produit-detail/produit-detail.component';
 import { ProduitEditComponent } from './produit/produit-edit/produit-edit.component';
 import { CategorieCreateComponent } from './categorie/categorie-create/categorie-create.component';
-import { JwtModule } from "@auth0/angular-jwt" ;
+import { JwtModule } from "@auth0/angular-jwt";
+import { AuthInterceptorService } from './services/AuthInterceptorService';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { JwtModule } from "@auth0/angular-jwt" ;
       config : { 
         tokenGetter : tokenGetter , 
         allowedDomains : [ "https://localhost:7185", "http://localhost:8087" ] , 
-        disallowedRoutes : [ "http://example.com/examplebadroute/" ] , 
+        disallowedRoutes : [ "http://example.com/examplebadroute/" ] 
       }, 
     }), 
     RouterModule.forRoot([
@@ -54,7 +55,11 @@ import { JwtModule } from "@auth0/angular-jwt" ;
       { path: 'produits/edit', component: ProduitEditComponent },
     ])
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true
+   }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

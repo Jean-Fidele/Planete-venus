@@ -17,9 +17,10 @@ export class CategorieComponent {
   public tabPage: number[] = [];
   public size: number = 5;
   public isActive = 1;
+  public url_base = environment.url_base;
   
   constructor(public http: HttpClient,  private router: Router) {
-    http.get<CategorieRes>('https://localhost:8087/api/categorie?page=1').subscribe((result) => {
+    http.get<CategorieRes>(this.url_base + '/categorie?page=1').subscribe((result) => {
       this.total = result.totale;
       var nbPage = this.total / this.size; 
       var reste = this.total % this.size;
@@ -36,8 +37,8 @@ export class CategorieComponent {
   }
 
   method(page: number){
-    var url_base = environment.url_base;
-    this.http.get<CategorieRes>(url_base + '/categorie?page=' + page).subscribe((result) => {       
+    
+    this.http.get<CategorieRes>(this.url_base + '/categorie?page=' + page).subscribe((result) => {       
       this.categories = [];      
       this.tabPage = [];
 
