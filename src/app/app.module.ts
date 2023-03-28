@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -15,8 +14,10 @@ import { ProduitCreateComponent } from './produit/produit-create/produit-create.
 import { ProduitDetailComponent } from './produit/produit-detail/produit-detail.component';
 import { ProduitEditComponent } from './produit/produit-edit/produit-edit.component';
 import { CategorieCreateComponent } from './categorie/categorie-create/categorie-create.component';
-import { JwtModule } from "@auth0/angular-jwt";
 import { AuthInterceptorService } from './services/AuthInterceptorService';
+import { LoginComponent } from './admin/login/login.component';
+import { UserComponent } from './admin/user/user.component';
+import { RoleComponent } from './admin/role/role.component';
 
 
 @NgModule({
@@ -31,25 +32,22 @@ import { AuthInterceptorService } from './services/AuthInterceptorService';
     CategorieEditComponent,
     ProduitCreateComponent,
     ProduitDetailComponent,
-    ProduitEditComponent
+    ProduitEditComponent,
+    LoginComponent,
+    UserComponent,
+    RoleComponent
   ],
   imports: [
-    BrowserModule,HttpClientModule,FormsModule,
-    JwtModule.forRoot({ 
-      config : { 
-        tokenGetter : tokenGetter , 
-        allowedDomains : [ "https://localhost:7185", "http://localhost:8087" ] , 
-        disallowedRoutes : [ "http://example.com/examplebadroute/" ] 
-      }, 
-    }), 
+    BrowserModule,HttpClientModule,FormsModule, 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'produits', component: ProduitComponent },
+    
       { path: 'categories', component: CategorieComponent },
       { path: 'categories/detail', component: CategorieDetailComponent, data: {id: 2} },
       { path: 'categories/create', component: CategorieCreateComponent },
       { path: 'categories/edit', component: CategorieEditComponent },
-
+      
+      { path: 'produits', component: ProduitComponent },
       { path: 'produits/detail', component: ProduitDetailComponent, data: {id: 2} },
       { path: 'produits/create', component: ProduitCreateComponent },
       { path: 'produits/edit', component: ProduitEditComponent },

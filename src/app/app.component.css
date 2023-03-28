@@ -1,0 +1,17 @@
+.app{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.footer{
+    background-color: silver;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteneur{
+    flex-grow: 1;
+}
