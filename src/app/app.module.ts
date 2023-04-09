@@ -40,8 +40,8 @@ import { RoleComponent } from './admin/role/role.component';
   imports: [
     BrowserModule,HttpClientModule,FormsModule, 
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-    
+      { path: '', component: CategorieComponent, pathMatch: 'full' },
+        
       { path: 'categories', component: CategorieComponent },
       { path: 'categories/detail', component: CategorieDetailComponent, data: {id: 2} },
       { path: 'categories/create', component: CategorieCreateComponent },

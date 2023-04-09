@@ -8,7 +8,10 @@ export class AuthInterceptorService implements HttpInterceptor {
   
       if (token){
          request = request.clone({
-            setHeaders: { Authorization: `Bearer ${token}` }
+            headers: request.headers.set('Authorization', `Bearer ${token}`)
+                                    .set('Access-Control-Allow-Origin', '*') ,
+            //setHeaders: { Authorization: `Bearer ${token}`}
+            //Access-Control-Allow-Origin: ''
          });
       }
   

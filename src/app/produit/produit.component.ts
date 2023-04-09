@@ -17,6 +17,7 @@ export class ProduitComponent {
   public tabPage: number[] = [];
   public size: number = 5;
   public url_base = environment.url_base;
+  public site_name = environment.site_name;
 
   constructor(public http: HttpClient,  private router: Router) {
     

@@ -26,9 +26,9 @@
           <tr *ngFor="let prod of produits">
             <td class="colCode">{{ prod.code }}</td>
             <td>{{ prod.name }}</td>
-            <td><img src="/assets/icones/page_find.png" class="img-thumbnail" (click)="ClickDetails(prod.code)" alt="aucun"/></td>
-              <td><img src="/assets/icones/page_edit.png" class="img-thumbnail" (click)="ClickEdit(prod.code)" alt="aucun"/></td>
-              <td><img src="/assets/icones/page_delete.png" class="img-thumbnail" (click)="ClickDelete(prod.code)" alt="aucun"/></td>
+            <td><img src="/{{site_name}}/assets/icones/page_find.png" class="img-thumbnail" (click)="ClickDetails(prod.code)" alt="aucun"/></td>
+            <td><img src="/{{site_name}}/assets/icones/page_edit.png" class="img-thumbnail" (click)="ClickEdit(prod.code)" alt="aucun"/></td>
+            <td><img src="/{{site_name}}/assets/icones/page_delete.png" class="img-thumbnail" (click)="ClickDelete(prod.code)" alt="aucun"/></td>
           </tr>
       </tbody>
     </table>

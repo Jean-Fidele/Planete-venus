@@ -18,6 +18,8 @@ export class CategorieComponent {
   public size: number = 5;
   public isActive = 1;
   public url_base = environment.url_base;
+  public site_name = environment.site_name;
+  public error_name: string = "";
   
   constructor(public http: HttpClient,  private router: Router) {
     http.get<CategorieRes>(this.url_base + '/categorie?page=1').subscribe((result) => {
@@ -33,6 +35,9 @@ export class CategorieComponent {
       for(let i = 1; i <= this.size; i++){
         this.categories.push(result.categories[i-1]);
       }
+    }
+    ,(err:any)=>{
+      this.error_name = err.message;
     });
   }
 
@@ -93,3 +98,4 @@ export class CategorieComponent {
     this.method(this.isActive);
   }
 }
+

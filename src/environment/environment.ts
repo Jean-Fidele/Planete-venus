@@ -1,4 +1,5 @@
 export const environment = {
     url_base: "http://localhost:8087/api",
-    apiKey: 'devKey'
+    apiKey: 'devKey',
+    site_name: 'planete-venus'
 };
