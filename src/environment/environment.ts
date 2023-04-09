@@ -1,5 +1,7 @@
 export const environment = {
-    url_base: "http://localhost:8087/api",
+    url_base: "https://localhost:7185/api",
+    unreachableHost: "https://localhost:7185/api",
+    host: "https://localhost:7185/api",
     apiKey: 'devKey',
     site_name: 'planete-venus'
 };
