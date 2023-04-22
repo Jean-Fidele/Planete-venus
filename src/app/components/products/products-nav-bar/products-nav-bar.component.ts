@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store';
+import { GetNameAction } from 'src/app/ngrx/categorie/categorie.action';
 import {GetAllProductsAction, GetSelectedProductsAction} from '../../../ngrx/products.actions';
 
 @Component({
@@ -20,5 +21,9 @@ export class ProductsNavBarComponent implements OnInit {
 
   onGetSelectedProducts() {
     this.store.dispatch(new GetSelectedProductsAction({}))
+  }
+
+  onDeclenche(){
+    this.store.dispatch(new GetNameAction("123456789"));
   }
 }

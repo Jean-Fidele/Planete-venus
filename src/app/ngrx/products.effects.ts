@@ -17,7 +17,7 @@ export class ProductsEffects {
   constructor(private productService:ProductService, private effectActions:Actions) {
   }
 
-  getAllProductsEffect:Observable<Action>=createEffect(
+  getAllProductsEffect:Observable<Action> = createEffect(
     ()=>this.effectActions.pipe(
       ofType(ProductsActionsTypes.GET_ALL_PRODUCTS),
       mergeMap((action)=>{

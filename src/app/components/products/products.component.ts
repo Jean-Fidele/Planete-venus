@@ -10,13 +10,19 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  productsState$:Observable<ProductsState>|null=null;
+  public productsState$:Observable<ProductsState>|null=null;
+  public chaine$: Observable<string> |null = null;
   readonly ProductsStateEnum= ProductsStateEnum;
+
   constructor(private store:Store<any>) { }
 
   ngOnInit(): void {
     this.productsState$=this.store.pipe(
       map((state)=>  state.catalogState)
+    );
+
+    this.chaine$ = this.store.pipe(
+      map((state)=> state.chaine)
     );
   }
 }
