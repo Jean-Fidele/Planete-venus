@@ -21,7 +21,7 @@ import { PrdouctItemComponent } from './components/products/products-list/prdouc
     ProductsComponent,
     ProductsNavBarComponent,
     ProductsListComponent,
-    PrdouctItemComponent
+    PrdouctItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,7 @@ import { PrdouctItemComponent } from './components/products/products-list/prdouc
     EffectsModule.forRoot([ProductsEffects]),
     StoreDevtoolsModule.instrument()
   ],
-  providers: [],
+  providers: [], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
