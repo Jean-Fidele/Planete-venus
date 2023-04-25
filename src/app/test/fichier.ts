@@ -1,11 +1,21 @@
-import { Observable } from "rxjs";
 
-const obs = new Observable((req)=>{
-    req.next(1);
-    req.next(2);
-    req.next(3);
-});
+const obj = {
+    nom: "RAKOTOMAMONJY",
+    prenom: "Fidele",
+    enfant:{
+        nom: "RAKOTOMAMONJY",
+        prenom: "Denis",
+        enfant:[1,2,3,4,5]
+    }
+}
 
-obs.subscribe((rep)=>{
-    console.log("Je suis numero :" + rep);
-});
+const add = {...obj,
+             enfant:{
+                ...obj.enfant, 
+                nom:"RRK", 
+                prenom: "Denis copy"
+             }
+            };
+
+console.log("Ancien Tab : " + JSON.stringify(obj));
+console.log("Nouvelle Tab : " + JSON.stringify(add));

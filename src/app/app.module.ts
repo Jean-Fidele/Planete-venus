@@ -29,7 +29,7 @@ import { PrdouctItemComponent } from './components/products/products-list/prdouc
     HttpClientModule,
     StoreModule.forRoot({catalogState:productsReducer}),
     EffectsModule.forRoot([ProductsEffects]),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument({name: "PLANETE-VENUS-APP"})
   ],
   providers: [], 
   bootstrap: [AppComponent]
